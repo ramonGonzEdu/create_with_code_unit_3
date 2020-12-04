@@ -7,11 +7,14 @@ public class PlayerController : MonoBehaviour
 	private void Start()
 	{
 		playerRb = GetComponent<Rigidbody>();
-		playerRb.AddForce(Vector3.up * 1000);
 	}
 
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Space) || (Application.isEditor && Input.GetKeyDown(KeyCode.O)))
+		{
+			playerRb.AddForce(Vector3.up * 1000);
 
+		}
 	}
 }
