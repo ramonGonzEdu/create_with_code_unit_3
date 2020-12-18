@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce = 200;
 	public float gravityModifier = 1;
 	public bool isOnGround = true;
-	public bool gameOver = true;
+	public bool gameOver = false;
 	private void Start()
 	{
 		playerRb = GetComponent<Rigidbody>();
