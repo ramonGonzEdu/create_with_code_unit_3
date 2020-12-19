@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
 	private Rigidbody playerRb;
@@ -15,11 +16,13 @@ public class PlayerController : MonoBehaviour
 
 	public AudioClip jumpSound;
 	public AudioClip crashSound;
+	private AudioSource playerAudio;
 	private void Start()
 	{
 		playerRb = GetComponent<Rigidbody>();
 		Physics.gravity *= gravityModifier;
 		playerAnim = GetComponent<Animator>();
+		playerAudio = GetComponent<AudioSource>();
 	}
 
 	private void Update()
@@ -30,6 +33,7 @@ public class PlayerController : MonoBehaviour
 			playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 			isOnGround = false;
 			dirtParticle.Stop();
+			playerAudio.PlayOneShot(jumpSound, 1.0f);
 		}
 	}
 
@@ -43,6 +47,7 @@ public class PlayerController : MonoBehaviour
 		else if (collision.gameObject.CompareTag("Obstacle"))
 		{
 			explosionParticle.Play();
+			playerAudio.PlayOneShot(crashSound, 1.0f);
 			gameOver = true;
 			Debug.Log("Game Over");
 			playerAnim.SetBool("Death_b", true);
