@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		if ((Input.GetKeyDown(KeyCode.Space) || (Application.isEditor && Input.GetKeyDown(KeyCode.O))) && isOnGround)
+		if ((Input.GetKeyDown(KeyCode.Space) || (Application.isEditor && Input.GetKeyDown(KeyCode.O))) && isOnGround && !gameOver)
 		{
 			playerAnim.SetTrigger("Jump_trig");
 			playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
 		{
 			gameOver = true;
 			Debug.Log("Game Over");
+			playerAnim.SetBool("Death_b", true);
+			playerAnim.SetInteger("DeathType_int", 1);
 		}
+
 	}
 }
