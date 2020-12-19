@@ -9,8 +9,12 @@ public class PlayerController : MonoBehaviour
 	public bool isOnGround = true;
 	public bool gameOver = false;
 	private Animator playerAnim;
+
 	public ParticleSystem explosionParticle;
 	public ParticleSystem dirtParticle;
+
+	public AudioClip jumpSound;
+	public AudioClip crashSound;
 	private void Start()
 	{
 		playerRb = GetComponent<Rigidbody>();
