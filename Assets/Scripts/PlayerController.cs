@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
 	public bool isOnGround = true;
 	public bool gameOver = false;
 	private Animator playerAnim;
+	public ParticleSystem explosionParticle;
 	private void Start()
 	{
 		playerRb = GetComponent<Rigidbody>();
 		Physics.gravity *= gravityModifier;
 		playerAnim = GetComponent<Animator>();
+		explosionParticle = GetComponentInChildren<ParticleSystem>();
 	}
 
 	private void Update()
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
 			isOnGround = true;
 		else if (collision.gameObject.CompareTag("Obstacle"))
 		{
+			explosionParticle.Play();
 			gameOver = true;
 			Debug.Log("Game Over");
 			playerAnim.SetBool("Death_b", true);
