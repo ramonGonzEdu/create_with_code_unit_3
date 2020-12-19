@@ -233,6 +233,7 @@ MonoBehaviour:
   gravityModifier: 2
   isOnGround: 1
   gameOver: 0
+  explosionParticle: {fileID: 0}
 --- !u!4 &55635952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400066, guid: fe520ce6663e67348a964bf7b4318e26,
@@ -810,7 +811,7 @@ PrefabInstance:
     - target: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6,
         type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
-      value: 0.040733755
+      value: 0.017242849
       objectReference: {fileID: 0}
     - target: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6,
         type: 3}
